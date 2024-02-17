@@ -34,7 +34,7 @@ def trap_integrator(t, dt, num_traps, thrust_func):
 def force_function(sim,y,t,i):
     # combines the individual force functions into a total acceleration.
     y_new = np.zeros(6)
-    y_new += ff.grav_function(sim, y)
+    y_new += ff.grav_function(sim, y, 6.67e-11)
     y_new += ff.thrust_function(sim, i)
     sim.thrust_graph.append(y_new[5])
     y_new[:3] += (y[3:] + y_new[3:]) * sim.dt

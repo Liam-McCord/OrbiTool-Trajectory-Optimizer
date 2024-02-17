@@ -23,3 +23,7 @@ def drag_function(sim, y, p, drag_coeff, ref_area):
     y_new[:3] += accel * accel_unit_vector
     
     
+
+
+
+    

@@ -1,6 +1,5 @@
 import numpy as np
 import helperfunctions as hf
-
 g = -9.81
 n_max = 5
 grav_const = 6.67e-11
@@ -37,5 +36,5 @@ class Simulation(Rocket):
         self.thrust_graph = []
         
     def run_simulation(self):
-        t_list, y, i_final = hf.RK4(self, self.rocket.y, hf.ff.force_function, self.max_steps, self.dt)
+        t_list, y, i_final = hf.RK4(self, self.rocket.y, hf.force_function, self.max_steps, self.dt)
         return t_list, y, i_final

@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_path(plotted_path, t_list, rocket, final_i):
+def plot_path(plotted_path, denoised_path, t_list, rocket, final_i):
     thrust_graph = plt.axes()
     thrust_graph.plot(np.arange(0,len(plotted_path[5]),1), plotted_path[5])
+    
     thrust_graph.set_box_aspect(1)
 
     thrust_graph.plot(np.arange(0,len(rocket.step_thrust_distribution),1), rocket.step_thrust_distribution)
@@ -24,7 +25,8 @@ def plot_path(plotted_path, t_list, rocket, final_i):
 
     print(velocity_map)
     
-    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], plotted_path[2][:final_i])
+    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], plotted_path[2][:final_i], label = "NOISY")
+    
 
     leg = plt.legend(loc='upper left')
 
@@ -46,7 +48,7 @@ def plot_path(plotted_path, t_list, rocket, final_i):
 
     ax2.scatter3D(plotted_path[0][thrust_end_i], plotted_path[1][thrust_end_i], plotted_path[2][thrust_end_i], marker="X", alpha=0.6, color="orange", label = "Thrust End")
 
-
+    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], denoised_path[:final_i], label = "DENOISED")
 
     #path_chopped = plotted_path[:final_i]
     #print(path_chopped)
@@ -60,3 +62,4 @@ def plot_path(plotted_path, t_list, rocket, final_i):
     ax2.set_xlim3d(-1 * GraphAreaStart, GraphAreaStart)
     ax2.set_ylim3d(-1 * GraphAreaStart, GraphAreaStart)
     ax2.set_zlim3d(-1 * GraphAreaStart, GraphAreaStart)
+    plt.show()
