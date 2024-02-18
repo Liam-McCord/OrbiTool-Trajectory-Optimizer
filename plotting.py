@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def plot_path(plotted_path, denoised_path, t_list, rocket, final_i):
+    """Readouts and statistics of the rocket's path are given here. I may split this into smaller functions in the future."""
     thrust_graph = plt.axes()
     thrust_graph.plot(np.arange(0,len(plotted_path[5]),1), plotted_path[5])
     

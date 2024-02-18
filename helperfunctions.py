@@ -20,8 +20,7 @@ def RK4(sim, y_initial, f, t, dt):
     return(tlist, y, i)
 
 def trap_integrator(t, dt, num_traps, thrust_func):
-    """Gives impulse from a thrust equation."""
-    
+    """Gives impulse from a thrust equationvia trapezium integration."""
     dx = dt / num_traps
     impulse = 0
     x = t
@@ -32,7 +31,7 @@ def trap_integrator(t, dt, num_traps, thrust_func):
     return(impulse)
 
 def force_function(sim,y,t,i):
-    # combines the individual force functions into a total acceleration.
+    """combines the individual force functions into a total acceleration."""
     y_new = np.zeros(6)
     y_new += ff.grav_function(sim, y, 6.67e-11)
     y_new += ff.thrust_function(sim, i)
