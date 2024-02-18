@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_path(plotted_path, denoised_path, t_list, rocket, final_i):
+def plot_path(plotted_path, denoised_path, real_path, t_list, rocket, final_i):
     """Readouts and statistics of the rocket's path are given here. I may split this into smaller functions in the future."""
     thrust_graph = plt.axes()
     thrust_graph.plot(np.arange(0,len(plotted_path[5]),1), plotted_path[5])
@@ -26,8 +26,9 @@ def plot_path(plotted_path, denoised_path, t_list, rocket, final_i):
 
     print(velocity_map)
     
-    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], plotted_path[2][:final_i], label = "NOISY")
+    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], plotted_path[2][:final_i], label = "NOISY", color="red")
     
+    ax2.plot3D(real_path[0][:final_i], real_path[1][:final_i], real_path[2][:final_i], label = "Real Path", color="orange")
 
     leg = plt.legend(loc='upper left')
 
@@ -49,7 +50,7 @@ def plot_path(plotted_path, denoised_path, t_list, rocket, final_i):
 
     ax2.scatter3D(plotted_path[0][thrust_end_i], plotted_path[1][thrust_end_i], plotted_path[2][thrust_end_i], marker="X", alpha=0.6, color="orange", label = "Thrust End")
 
-    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], denoised_path[:final_i], label = "DENOISED")
+    ax2.plot3D(plotted_path[0][:final_i], plotted_path[1][:final_i], denoised_path[:final_i], label = "DENOISED", color="teal")
 
     #path_chopped = plotted_path[:final_i]
     #print(path_chopped)
