@@ -35,6 +35,9 @@ def force_function(sim,y,t,i):
     y_new = np.zeros(6)
     y_new += ff.grav_function(sim, y, 6.67e-11)
     y_new += ff.thrust_function(sim, i)
+    y_new += ff.drag_function(sim, y, 1.225, 0.75, 9)
+    
+    # Still needs drag function
     sim.thrust_graph.append(y_new[5])
     y_new[:3] += (y[3:] + y_new[3:]) * sim.dt
     return y_new

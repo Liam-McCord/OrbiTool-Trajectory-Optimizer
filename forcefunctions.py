@@ -16,11 +16,22 @@ def grav_function(sim, y, grav_const):
     return y_new
 
 def drag_function(sim, y, p, drag_coeff, ref_area):
-    # A very simple drag function for the rocket
+    # A very simple drag function for the rocket, UNFINISHED
+    # Assuming p is constant for the first test
+    # F = MA therefrore A = F / M
     y_new = np.zeros(6)
-    accel = -1 * 0.5 * p * np.linalg.norm(y[3:]) ** 2 * drag_coeff * ref_area
-    accel_unit_vector = y[3:] / accel
-    y_new[:3] += accel * accel_unit_vector
+    #print(y)
+    accel = (-0.5 * p * (np.linalg.norm(y[3:]) ** 2) * drag_coeff * ref_area) / sim.rocket.mass
+    #print(accel)
+    accel_unit_vector = y[3:] / np.linalg.norm(y[3:])
+    #print(accel_unit_vector)
+    #print(accel_unit_vector)
+    y_new[3:] += accel * accel_unit_vector * sim.dt
+    #print(y_new)
+    return y_new
+    # Need  
+    
+    
     
     
 
