@@ -8,7 +8,7 @@ from filterpy.kalman import rts_smoother
 def add_noise(path, t_list):
     """Simulates noise for the rocket path readings for realism purposes."""
     noisy_path = path
-    noisy_path[2][:] = path[2][:] + np.random.normal(0.2,0.2,len(t_list)) 
+    noisy_path[2][:] = path[2][:] + np.random.normal(0.5,0.5,len(t_list)) 
     return noisy_path
 
 def filter_noise(noisy_path):
